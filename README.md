@@ -4,6 +4,12 @@ Android app that records university lectures (up to 3 hours and more) and turns 
 **on the phone, offline and for free**. Built for non-technical users: one button to record,
 one to transcribe.
 
+<p align="center">
+  <img src="docs/screenshots/home.png" width="270" alt="Lecture list">
+  &nbsp;
+  <img src="docs/screenshots/detail.png" width="270" alt="Transcribed lecture">
+</p>
+
 - Recording runs in a foreground service and survives sudden crashes (AAC/ADTS → M4A).
 - Offline transcription with [Parakeet TDT 0.6B v3](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3)
   (Italian + 24 other languages, with punctuation) via [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx),
