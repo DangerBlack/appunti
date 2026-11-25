@@ -1,0 +1,11 @@
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+.kotlin/
+*.apk
+*.jks
+*.keystore
+# Downloaded by scripts/fetch-deps.sh
+app/libs/*.aar
