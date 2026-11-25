@@ -47,12 +47,13 @@ jobs:
           echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
           echo "APPUNTI_KEYSTORE=$RUNNER_TEMP/release.keystore" >> "$GITHUB_ENV"
 
-      - name: Build release APK
+      - name: Build and sign release APK
         env:
           APPUNTI_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           APPUNTI_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          APPUNTI_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew --no-daemon assembleRelease
+        run: |
+          ./gradlew --no-daemon assembleRelease -Punsigned
+          scripts/sign-release.sh app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/app-release.apk"
 
       - name: Publish release
         if: startsWith(github.ref, 'refs/tags/')
@@ -60,7 +61,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           apk="Appunti-$VERSION.apk"
-          cp app/build/outputs/apk/release/app-release.apk "$apk"
+          cp "$RUNNER_TEMP/app-release.apk" "$apk"
           sha256sum "$apk" > "$apk.sha256"
           gh release create "$GITHUB_REF_NAME" "$apk" "$apk.sha256" \
             --title "Appunti $VERSION" --generate-notes
@@ -70,4 +71,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: appunti-apk
-          path: app/build/outputs/apk/release/app-release.apk
+          path: ${{ runner.temp }}/app-release.apk

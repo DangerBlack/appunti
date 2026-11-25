@@ -50,8 +50,10 @@ Phone requirements: Android 10+, 64-bit, ~1 GB free, 6 GB RAM recommended
 ## Releases
 
 Pushing a tag `vX.Y.Z` that matches `versionName` runs `.github/workflows/release.yml`,
-which builds a signed APK and attaches it to a GitHub release. The workflow needs these
-repository secrets: `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`.
+which builds the APK, signs it with `scripts/sign-release.sh` and attaches it to a GitHub release.
+Releases use APK Signature Scheme v3 key rotation: `signing/lineage.bin` links the release key
+to the key used for the first builds, so updates install over older versions.
+Repository secrets: `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`.
 
 ## License
 

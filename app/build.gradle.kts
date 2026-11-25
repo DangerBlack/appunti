@@ -24,23 +24,13 @@ android {
         }
     }
 
-    // CI signs releases with the keystore passed through environment variables
-    // (see .github/workflows/release.yml); local builds fall back to the debug key.
-    val keystore = System.getenv("APPUNTI_KEYSTORE")?.let { file(it) }?.takeIf { it.exists() }
-    signingConfigs {
-        if (keystore != null) create("release") {
-            storeFile = keystore
-            storePassword = System.getenv("APPUNTI_KEYSTORE_PASSWORD")
-            keyAlias = System.getenv("APPUNTI_KEY_ALIAS")
-            keyPassword = System.getenv("APPUNTI_KEY_PASSWORD")
-        }
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
+            // Official releases are built with -Punsigned and signed by scripts/sign-release.sh
+            // (new key + rotation lineage); local builds just use the debug key.
+            signingConfig = if (project.hasProperty("unsigned")) null else signingConfigs.getByName("debug")
         }
     }
 
