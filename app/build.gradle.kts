@@ -12,8 +12,8 @@ android {
         applicationId = "org.appunti.app"
         minSdk = 29
         targetSdk = 35
-        versionCode = 9
-        versionName = "0.7.0"
+        versionCode = 10
+        versionName = "0.7.1"
 
         // Where the app downloads the speech model on first launch.
         buildConfigField("String", "MODEL_BASE_URL", "\"https://cdn.s3.cubbit.eu/models\"")
