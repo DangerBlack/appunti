@@ -63,7 +63,10 @@ Repository secrets: `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`.
 
 ## License
 
-Apache-2.0. The Parakeet model is CC-BY-4.0 (NVIDIA); sherpa-onnx is Apache-2.0.
+Copyright 2026 Daniele Baschieri.
+
+Licensed under the [Apache License, Version 2.0](LICENSE). Third-party components and models
+(sherpa-onnx, ONNX Runtime, Parakeet TDT 0.6B v3 under CC BY 4.0, Silero VAD) are listed in [NOTICE](NOTICE).
 
 ## Support
 

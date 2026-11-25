@@ -1,0 +1,20 @@
+Appunti
+Copyright 2026 Daniele Baschieri
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product uses third-party software and models:
+
+- sherpa-onnx (https://github.com/k2-fsa/sherpa-onnx)
+  Copyright Xiaomi Corporation and contributors. Licensed under the Apache License 2.0.
+  The sherpa-onnx Android library bundles ONNX Runtime
+  (https://github.com/microsoft/onnxruntime), Copyright Microsoft Corporation, MIT License.
+
+- Parakeet TDT 0.6B v3 speech recognition model, downloaded at runtime
+  (https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3)
+  Copyright NVIDIA Corporation. Licensed under CC BY 4.0
+  (https://creativecommons.org/licenses/by/4.0/). Converted to ONNX int8 by the
+  sherpa-onnx project.
+
+- Silero VAD model, downloaded at runtime (https://github.com/snakers4/silero-vad)
+  Copyright Silero Team. MIT License.
