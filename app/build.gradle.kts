@@ -26,7 +26,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             // Official releases are built with -Punsigned and signed by scripts/sign-release.sh
             // (new key + rotation lineage); local builds just use the debug key.
@@ -46,7 +47,10 @@ android {
         buildConfig = true
     }
     packaging {
-        jniLibs.useLegacyPackaging = false
+        // Compressed native libraries: ~13 MB download instead of ~30 MB; Android extracts them on install.
+        jniLibs.useLegacyPackaging = true
+        // The JNI library only needs onnxruntime; the C and C++ API libraries are for native callers.
+        jniLibs.excludes += listOf("**/libsherpa-onnx-c-api.so", "**/libsherpa-onnx-cxx-api.so")
     }
 }
 
