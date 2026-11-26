@@ -1,0 +1,24 @@
+Appunti registra le lezioni universitarie, anche di 3 ore, e le trasforma in testo direttamente sul telefono. Niente account, niente abbonamenti, niente internet dopo la prima configurazione.
+
+<b>Come funziona</b>
+• Premi Registra e appoggia il telefono vicino a chi parla. Nel frattempo puoi usare altre app.
+• A fine lezione premi Trascrivi. Il testo compare sul telefono, con la punteggiatura.
+• Rileggilo, correggi gli errori, cerca in tutte le lezioni, copialo o condividilo.
+
+<b>Privacy prima di tutto</b>
+Il riconoscimento vocale gira interamente sul telefono con il modello Parakeet di NVIDIA (italiano, inglese, spagnolo, francese, tedesco e altre 20 lingue europee). Le registrazioni non lasciano mai il dispositivo. Niente pubblicità, tracciamento o statistiche.
+
+<b>Funzioni</b>
+• Registrazioni lunghe che resistono a crash e interruzioni
+• Trascrizione offline che riprende da dove si era fermata
+• Editor con trova e sostituisci, ricerca tra le lezioni
+• Esportazione in .txt e sottotitoli .srt, salvati in Documenti/Appunti
+• Importazione di audio registrati con altre app
+• Riassunti e testi sistemati con l'AI, facoltativi, con il server compatibile OpenAI che preferisci
+
+<b>Da sapere</b>
+• Al primo avvio l'app scarica il modello vocale (circa 650 MB, meglio in Wi-Fi).
+• Serve un telefono a 64 bit con Android 10 o successivo; consigliati 6 GB di RAM.
+• Trascrivere una lezione di 2 ore richiede un po' di tempo: lascia il telefono in carica.
+
+Appunti è software libero e open source (Apache-2.0): https://github.com/DangerBlack/appunti

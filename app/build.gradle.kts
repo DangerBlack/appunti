@@ -6,14 +6,14 @@ plugins {
 
 android {
     namespace = "org.appunti.app"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "org.appunti.app"
         minSdk = 29
-        targetSdk = 35
-        versionCode = 10
-        versionName = "0.7.1"
+        targetSdk = 36
+        versionCode = 12
+        versionName = "0.8.0"
 
         // Where the app downloads the speech model on first launch.
         buildConfigField("String", "MODEL_BASE_URL", "\"https://cdn.s3.cubbit.eu/models\"")

@@ -1,0 +1,24 @@
+Appunti records university lectures, even 3 hours long, and turns them into text right on your phone. No account, no subscription, no internet needed after the first setup.
+
+<b>How it works</b>
+• Tap Record and put the phone near the speaker. You can use other apps meanwhile.
+• When the lecture ends, tap Transcribe. The text appears on the phone, with punctuation.
+• Read it, fix any mistakes, search across all your lectures, copy or share it.
+
+<b>Private by design</b>
+Speech recognition runs entirely on the phone with NVIDIA's Parakeet model (Italian, English, Spanish, French, German and 20 more European languages). Your recordings never leave the device. No ads, no trackers, no analytics.
+
+<b>Features</b>
+• Long recordings that survive crashes and interruptions
+• Offline transcription that resumes where it stopped
+• Editor with find and replace, search across lectures
+• Export to .txt and .srt subtitles, saved in Documents/Appunti
+• Import audio recorded with other apps
+• Optional AI summaries and clean-ups with any OpenAI-compatible server you choose
+
+<b>Good to know</b>
+• On first launch the app downloads the speech model (about 650 MB, Wi-Fi recommended).
+• Needs a 64-bit phone with Android 10 or later; 6 GB of RAM recommended.
+• Transcribing a 2-hour lecture takes a while: leave the phone charging.
+
+Appunti is free and open source (Apache-2.0): https://github.com/DangerBlack/appunti

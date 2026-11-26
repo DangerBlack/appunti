@@ -1,7 +1,8 @@
 name: Release
 
 # Push a tag like v0.7.0 (matching versionName in app/build.gradle.kts)
-# to build a signed APK and publish it as a GitHub release.
+# to build a signed APK and publish it as a GitHub release. The signed App Bundle
+# for Google Play is attached to the workflow run as an artifact.
 on:
   push:
     tags: ["v*"]
@@ -47,13 +48,14 @@ jobs:
           echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
           echo "APPUNTI_KEYSTORE=$RUNNER_TEMP/release.keystore" >> "$GITHUB_ENV"
 
-      - name: Build and sign release APK
+      - name: Build and sign release APK and App Bundle
         env:
           APPUNTI_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           APPUNTI_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         run: |
-          ./gradlew --no-daemon assembleRelease -Punsigned
+          ./gradlew --no-daemon assembleRelease bundleRelease -Punsigned
           scripts/sign-release.sh app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/app-release.apk"
+          scripts/sign-bundle.sh app/build/outputs/bundle/release/app-release.aab "$RUNNER_TEMP/app-release.aab"
 
       - name: Publish release
         if: startsWith(github.ref, 'refs/tags/')
@@ -66,7 +68,13 @@ jobs:
           gh release create "$GITHUB_REF_NAME" "$apk" "$apk.sha256" \
             --title "Appunti $VERSION" --generate-notes
 
-      - name: Upload artifact (manual runs)
+      - name: Upload App Bundle for Google Play
+        uses: actions/upload-artifact@v4
+        with:
+          name: appunti-aab
+          path: ${{ runner.temp }}/app-release.aab
+
+      - name: Upload APK (manual runs)
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         uses: actions/upload-artifact@v4
         with:

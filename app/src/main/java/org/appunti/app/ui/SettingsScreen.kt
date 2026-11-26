@@ -28,6 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -41,6 +42,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
+import org.appunti.app.BuildConfig
 import org.appunti.app.R
 import org.appunti.app.ai.AiConfig
 
@@ -126,6 +128,12 @@ fun SettingsScreen(vm: AppViewModel) {
                     vm.saveAiConfig(AiConfig("", "", ""))
                 }) { Text(stringResource(R.string.ai_clear), color = Color(0xFFEF9A9A)) }
             }
+
+            val uri = LocalUriHandler.current
+            TextButton(onClick = { uri.openUri(PRIVACY_URL) }) { Text(stringResource(R.string.privacy_policy)) }
+            Text("Appunti ${BuildConfig.VERSION_NAME}", color = Color.Gray, fontSize = 13.sp)
         }
     }
 }
+
+private const val PRIVACY_URL = "https://github.com/DangerBlack/appunti/blob/main/docs/PRIVACY.md"
